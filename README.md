@@ -72,6 +72,7 @@ ansible-playbook -i hosts site.yml
 ![activité1](screenshots/activité1.png)
 
 5. Fonctionnement des rôles
+
 🔹 Rôle 1 : java-install
 
 Installe automatiquement Java JDK via APT.
@@ -101,6 +102,7 @@ Installe le service Jenkins
 Active le service système
 
 6. Vérifications après installation
+   
 Vérifier Docker :
 
 docker --version
