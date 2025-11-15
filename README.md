@@ -43,6 +43,7 @@ sudo apt install ansible -y
 
 ✔ Vérification de la version :
 ansible --version
+
 ![activité1](screenshots/ansible-version.png)
 
 2. Inventaire Ansible (hosts)
