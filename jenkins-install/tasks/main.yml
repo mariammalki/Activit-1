@@ -1,0 +1,32 @@
+---
+# tasks file for jenkins-install
+
+- name: Installer gnupg si nécessaire
+  apt:
+    name: gnupg
+    state: present
+    update_cache: yes
+
+- name: Créer le dossier keyrings
+  file:
+    path: /usr/share/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Télécharger la clé GPG Jenkins
+  get_url:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    dest: /usr/share/keyrings/jenkins-keyring.asc
+    mode: '0644'
+
+- name: Ajouter le repository Jenkins
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+    state: present
+
+- name: Installer Jenkins
+  apt:
+    name: jenkins
+    state: present
+    update_cache: yes
+

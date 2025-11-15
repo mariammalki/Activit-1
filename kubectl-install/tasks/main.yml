@@ -1,0 +1,14 @@
+---
+# tasks file for kubectl-install
+
+- name: Télécharger kubectl
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+    dest: /usr/local/bin/kubectl
+    mode: '0755'
+    timeout: 60
+  retries: 5
+  delay: 5
+  register: kubectl_download
+  until: kubectl_download is succeeded
+

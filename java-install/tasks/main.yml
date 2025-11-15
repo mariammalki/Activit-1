@@ -1,0 +1,8 @@
+---
+# tasks file for java-install
+
+- name: Installer Java JDK
+  apt:
+    name: openjdk-17-jdk
+    state: present
+  become: yes

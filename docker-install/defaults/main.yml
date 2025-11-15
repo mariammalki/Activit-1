@@ -1,0 +1,3 @@
+---
+# defaults file for docker-install
+docker_version: docker-ce

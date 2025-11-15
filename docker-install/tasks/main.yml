@@ -1,0 +1,30 @@
+---
+# tasks file for docker-install
+
+- name: Installer les dépendances pour Docker
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+  become: yes
+
+- name: Ajouter la clé Docker GPG
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Ajouter le repo Docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Installer Docker
+  apt:
+    name: docker-ce
+    state: present
+  become: yes
